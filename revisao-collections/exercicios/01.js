@@ -1,4 +1,4 @@
-const despesas = require('../base/listas')();
+const despesas = require('../base/lista-despesas')();
 
 function getMaiorDespesa() {
     if (!despesas.length) {
@@ -14,10 +14,6 @@ function getMaiorDespesa() {
     }
 
     return despesa;
-}
-
-function getDespesaPorNome(nome) {
-
 }
 
 const maiorDespesa = getMaiorDespesa();
