@@ -12,9 +12,18 @@ const sublist = despesas.filter((despesa) => {
 });
 console.log(sublist);
 
+// retorno um elemento
+const despesa = despesas.find((despesa) => {
+    return despesa.descricao.toLocaleLowerCase().includes('conta');    
+});
+
 
 const isPago = parcelas.every((parcela) => parcela.pago);
 console.log('is divida paga: ', isPago);
 
 const temParcelaAberta = parcelas.some((parcela) => !parcela.pago);
 console.log('is parcela aberta: ', temParcelaAberta);
+
+// reduce (somar os itens)
+
+// slice pra remover um item do array
