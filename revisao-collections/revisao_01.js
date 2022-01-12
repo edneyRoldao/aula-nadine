@@ -25,5 +25,23 @@ const temParcelaAberta = parcelas.some((parcela) => !parcela.pago);
 console.log('is parcela aberta: ', temParcelaAberta);
 
 // reduce (somar os itens)
+const total = despesas.reduce((valorAnterior, despesaAtual) => {
+    return valorAnterior + despesaAtual.valor;
+}, 0);
 
-// slice pra remover um item do array
+console.log(total);
+
+// map
+const listaSimples = despesas.map((despesa) => {
+    return {
+        descricao: despesa.descricao,
+        valor: despesa.valor
+    }
+});
+
+console.log(listaSimples);
+
+
+// splice
+// a partir do segundo element, remover 0 elements e add o element {test: 'testes'}
+despesas.splice(2, 0, {test: 'testes'});
