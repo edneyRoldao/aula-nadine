@@ -1,0 +1,47 @@
+# REST:
+    - Define padrão de para comunicacao entre sistemas utilizando o protocolo HTTP
+
+## Porque os sistemas precisam se comunicar entre si:
+    - Para trocar informacoes, então usamos uma forma padronizada para essa comunicacao, 
+    pois não precisamos e nem devemos saber como sistemas externos foram construidos
+
+## Qual o formato dos dados:
+    - JSON (muito parecido com objetos em Javascript)
+    - objeto em JS:     { field: 'nome', message: 'o nome e obrigatorio' }
+    - objeto em JSON:   { "field": 'nome', "message": 'o nome e obrigatorio' }
+
+## Qual os Métodos mais usados para a comunicacao:
+    - GET:      quando desejamos obter uma informacao, 
+    - POST:     quando desejamos adicinar uma nova informacao (dado)
+    - PUT:      quando desejamos alterar uma informacao (usado para alterar mais de um campo de JSON)
+    - DELETE:   ? serio isso?
+    - PATCH:    quando desejamos alterar uma informacao (alterar um dado, exp: ativar e desativar)
+
+## O que Request e Response
+    - Request: são os informacoes para se consumir um servico de uma API REST
+    - Response: é a resposta de uma API REST quando quem mandou o Request
+
+## O que compoe um Request:
+    - pode ter: headers
+    - pode ter: query parameters
+    - pode ter: body
+    - pode ter: path parameters
+    - deve ter: a URL (host + path)
+    - deve ter: o metodo (get, post, put, patch, delete)   
+
+## O que compoe um Response:
+    - deve ter: status da Request
+    - pode ter: bodyResponse
+
+## Exemplos de codigos HTTP response status:
+    QUANDO DEU CERTO O REQUEST:
+    - 200: success
+    - 201: created      - (usa para post quando adicionamos um dado)
+    - 204: no content   - (usa quando vc não tem um bodyResponse)
+    QUANDO OS DADOS DO REQUEST ESTAO ERRADOS REQUEST:
+    - 400: bad request  - os dados enviados no body e/ou queryParam e/ou pathParam são inválidos
+    - 404: not found    - quando a URL informada no request não existe
+    - 401: unauthorized - as credenciais de acesso ao service (API) estão inválidas
+    - 403: forbbidden   - url de origem do request não é permitida
+    QUANDO O SISTEMA DE DESTINO deu pau:
+    - 500: Internal Server Error: pode ser qualquer erro quer ocorra no sistema que construiu a API
