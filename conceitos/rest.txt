@@ -25,7 +25,7 @@
     - pode ter: headers
     - pode ter: query parameters
     - pode ter: body
-    - pode ter: path parameters
+    - pode ter: path parameters (compoem a propria url de forma dinamica)
     - deve ter: a URL (host + path)
     - deve ter: o metodo (get, post, put, patch, delete)   
 
@@ -45,3 +45,241 @@
     - 403: forbbidden   - url de origem do request não é permitida
     QUANDO O SISTEMA DE DESTINO deu pau:
     - 500: Internal Server Error: pode ser qualquer erro quer ocorra no sistema que construiu a API
+
+
+Montando servico no postman
+
+# API de Pedidos - RNTRC
+
+CRUD PEDIDO-CONTATO
+https://datasystem-backend-dev.azurewebsites.net/swagger-ui.html#/pedido-contato-controller
+
+
+
+CRUD PEDIDOS:
+    ## Serviço para criar um novo pedido para o transportador
+        - method:       POST
+        - urlBase:      https://datasystem-backend-dev.azurewebsites.net/
+        - path:         /pedido
+        - headers: 
+            - Authorization:    "Bearer token"
+        - body:
+                {
+                "cpfCnpjTransportador": "string",
+                "tipoPedido": "MovimentacaoFrota"
+                }
+
+
+    ## Serviço para obter pedido
+        - method:       GET
+        - urlBase:      https://datasystem-backend-dev.azurewebsites.net/
+        - path:         /pedido/{codigoPedido}
+        - pathParam:    codigoPedido
+        - headers: 
+            - Authorization:    "Bearer token"
+
+            
+    ## Cancelar pedido
+        - method:               PATCH
+        - urlBase:              https://datasystem-backend-dev.azurewebsites.net/
+        - path:                 /pedido/{codigoPedido}/cancelar/{rowVersion}
+        - pathParams:    
+            - codigoPedido
+            - rowVersion
+        - queryParam:
+            - situacaoPedido:   CAD, FEC, REJ, CAN    
+        - headers: 
+            - Authorization:    "Bearer token"
+
+
+    ## Serviço que atualiza um pedido
+        - method:       PUT
+        - urlBase:      https://datasystem-backend-dev.azurewebsites.net/
+        - path:         /pedido/{codigoPedido}
+        - pathParam:    codigoPedido
+        - headers: 
+            - Authorization:    "Bearer token"
+        - body:
+                {
+                "codigoPedido": 0,
+                "codigoSituacao": "string",
+                "cpfCnpjTransportador": "string",
+                "cpfSolicitante": "string",
+                "cpfUsuario": "string",
+                "dataAtualizacao": "string",
+                "dataCriacao": "string",
+                "idInterno": 0,
+                "nomeEntidade": "string",
+                "nomeUsuario": "string",
+                "observacoes": "string",
+                "rowVersion": "string",
+                "situacaoPedido": "string",
+                "solicitantePedido": "string",
+                "statusInterno": "string",
+                "tipoPedido": "string",
+                "tipoSolicitante": "string",
+                "tipoTransportador": "string",
+                "transportador": {
+                    "adimplenteAssociacao": true,
+                    "capitalSocial": 0,
+                    "categoriaCnh": "string",
+                    "cnaes": [
+                    {
+                        "codigo": 0,
+                        "descricao": "string"
+                    }
+                    ],
+                    "codigoSituacaoRntrc": "string",
+                    "contatos": [
+                    {
+                        "codigoTipoContato": "string",
+                        "contato": "string",
+                        "observacao": "string"
+                    }
+                    ],
+                    "cooperados": [
+                    {
+                        "capitalSocial": 0,
+                        "categoriaCnh": "string",
+                        "codigoPessoa": 0,
+                        "cpf": "string",
+                        "cpfCnpj": "string",
+                        "dataNascimento": "string",
+                        "descricaoTipoVinculo": "string",
+                        "inscricaoEstadual": "string",
+                        "inscricaoOcb": "string",
+                        "natureza": "string",
+                        "nome": "string",
+                        "nomeFantasia": "string",
+                        "numeroCnh": "string",
+                        "numeroIdentidade": "string",
+                        "numeroRegistroJunta": "string",
+                        "orgaoEmissorIdentidade": "string",
+                        "sexo": "string",
+                        "ufIdentidade": "string"
+                    }
+                    ],
+                    "cpfCnpj": "string",
+                    "cpfCnpjCooperado": "string",
+                    "cpfCnpjTransportador": "string",
+                    "dataDeCadastro": "string",
+                    "dataNascimento": "string",
+                    "descricaoSituacaoRNTRC": "string",
+                    "emailMovimentacaoFrota": true,
+                    "enderecos": [
+                    {
+                        "bairro": "string",
+                        "cep": "string",
+                        "codigoOperacao": "string",
+                        "codigoTipoEndereco": "string",
+                        "complemento": "string",
+                        "descricaoTipoEndereco": "string",
+                        "logradouro": "string",
+                        "municipio": "string",
+                        "municipioUfTransportador": "string",
+                        "nomeCidade": "string",
+                        "numero": "string",
+                        "pontoReferencia": "string",
+                        "rowVersion": "string",
+                        "tipoEndereco": "string",
+                        "uf": "string"
+                    }
+                    ],
+                    "gestores": [
+                    {
+                        "capitalSocial": 0,
+                        "categoriaCnh": "string",
+                        "codigoPessoa": 0,
+                        "cpf": "string",
+                        "cpfCnpj": "string",
+                        "dataNascimento": "string",
+                        "descricaoTipoVinculo": "string",
+                        "inscricaoEstadual": "string",
+                        "inscricaoOcb": "string",
+                        "natureza": "string",
+                        "nome": "string",
+                        "nomeFantasia": "string",
+                        "numeroCnh": "string",
+                        "numeroIdentidade": "string",
+                        "numeroRegistroJunta": "string",
+                        "orgaoEmissorIdentidade": "string",
+                        "sexo": "string",
+                        "ufIdentidade": "string"
+                    }
+                    ],
+                    "identidade": "string",
+                    "infoComplementares": {
+                    "codigo": 0,
+                    "descricao": "string"
+                    },
+                    "inscricaoEstadual": "string",
+                    "inscricaoOcb": "string",
+                    "nomeCompleto": "string",
+                    "nomeFantasia": "string",
+                    "nomeMae": "string",
+                    "nomeTransportador": "string",
+                    "numeroCnh": "string",
+                    "numeroRegistroJunta": "string",
+                    "numeroRntrc": "string",
+                    "orgaoEmissor": "string",
+                    "responsaveisTecnicos": [
+                    {
+                        "capitalSocial": 0,
+                        "categoriaCnh": "string",
+                        "codigoPessoa": 0,
+                        "cpf": "string",
+                        "cpfCnpj": "string",
+                        "dataNascimento": "string",
+                        "descricaoTipoVinculo": "string",
+                        "inscricaoEstadual": "string",
+                        "inscricaoOcb": "string",
+                        "natureza": "string",
+                        "nome": "string",
+                        "nomeFantasia": "string",
+                        "numeroCnh": "string",
+                        "numeroIdentidade": "string",
+                        "numeroRegistroJunta": "string",
+                        "orgaoEmissorIdentidade": "string",
+                        "sexo": "string",
+                        "ufIdentidade": "string"
+                    }
+                    ],
+                    "rowVersion": "string",
+                    "securityCnh": "string",
+                    "sexo": "string",
+                    "situacaoRntrc": "string",
+                    "tacAuxiliar": [
+                    {
+                        "cpf": "string",
+                        "nome": "string"
+                    }
+                    ],
+                    "tipoTransportador": "string",
+                    "uf": "string",
+                    "validadeCnh": "string",
+                    "validadeRntrc": "string",
+                    "veiculos": [
+                    {
+                        "automotor": true,
+                        "capacidadeCarga": 0,
+                        "codigoSituacaoVinculo": "string",
+                        "descricao": "string",
+                        "pbt": 0,
+                        "placa": "string",
+                        "possuiTag": true,
+                        "possuidorVeiculo": "string",
+                        "renavam": "string",
+                        "situacao": "string",
+                        "situacaoVeiculo": "string",
+                        "situacaoVinculoTransportador": "string",
+                        "tipo": "string",
+                        "tipoPropriedade": "string",
+                        "uf": "string"
+                    }
+                    ]
+                },
+                "validado": true
+                }        
+
+
+
